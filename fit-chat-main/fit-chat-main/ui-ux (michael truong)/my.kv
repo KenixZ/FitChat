@@ -1,0 +1,256 @@
+<MainScreenManager>:
+    MDScreen:
+        name: "login"
+        md_bg_color:51/255,153/255,255/255,1
+        MDCard:
+            size_hint:None, None
+            size: 600, 800
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 10
+            padding: 25
+            spacing: 25
+            orientation: 'vertical'
+
+            MDLabel
+                text: "Fit Chat"
+                font_size: 72
+                halign: 'center'
+                size_hint_y: None
+                height: self.texture_size[1]
+                padding_y: 25
+
+            MDTextField:
+                id: email
+                hint_text: "Enter email"
+                help_text_mode: "on_focus"
+                pos_hint: {'center_x':0.5, 'center_y': 0.9}
+                size_hint_x: None
+                icon_right: "account"
+                width: 400
+
+            MDTextField:
+                id: password
+                hint_text: "Enter password"
+                icon_right: "eye-off"
+                multiline: True
+                help_text_mode: "on_focus"
+                pos_hint: {'center_x':0.5, 'center_y': 0.7}
+                size_hint_x: None
+                password: True
+                width: 400
+
+            MDRectangleFlatButton:
+                text: 'Submit Login Information'
+                pos_hint: {'center_x':0.5, 'center_y': 0.3}
+                on_press: app.get_data()
+                width: 200
+                height: 100
+                background_color: 51/255,153/255,255/255,1
+
+            MDLabel:
+                id: login_message
+                text:
+                font: 20
+                halign: "center"
+                pos_hint: {'center_x':0.5, 'center_y': 0.3}
+
+
+    MDScreen:
+        name: "homepage"
+        BoxLayout:
+            orientation: 'vertical'
+
+            MDBottomAppBar:
+                title: "Bottom Navbar"
+            MDBottomNavigation:
+                #colors
+
+                MDBottomNavigationItem:
+                    name: "screen 1"
+                    text: "Profile"
+                    icon: 'account'
+                    MDScreen:
+                        name: "profile"
+                        #md_bg_color:51/255,153/255,255/255,1
+                        MDFloatLayout:
+                            #md_bg_color:51/255,153/255,255/255,1
+                            MDLabel:
+                                text: "Fit Chat"
+                                font_style: "H3"
+                                pos_hint: {"center_x": .55, "center_y": .93}
+                                theme_text_color: "Custom"
+                                text_color: 63/255, 63/255, 191/255, 1
+                            MDLabel:
+                                id: name
+                                text:"Michael Truong"
+                                font_style: "H5"
+                                pos_hint: {"center_x": .55, "center_y": .86}
+                                theme_text_color: "Custom"
+                                text_color: 63/255, 63/255, 191/255, 1
+                            Image:
+                                id: profile_picture
+                                source: "fitChatAvatars/defaultAvatar.png"
+                                pos_hint: {"center_x": .75, "center_y": .89}
+
+                            MDLabel:
+                                pos_hint: {"center_x": .5, "center_y": .75}
+                                text: "Biography"
+                                halign: 'center'
+                                font_style: "H4"
+                                theme_text_color: "Custom"
+                                text_color: 63/255, 63/255, 191/255, 1
+
+                            MDLabel:
+                                id: biography
+                                text: "No biography set"
+                                pos_hint: {"center_x": .5, "center_y": .68}
+                                halign: 'center'
+                                elevation: 10
+                                size_hint: .85, .09
+                                font_style: "H6"
+                                theme_text_color: "Custom"
+                                text_color: 63/255, 63/255, 191/255, 1
+
+
+
+
+                MDBottomNavigationItem:
+                    name: "screen 2"
+                    text: "Matching"
+                    icon: 'account-multiple-plus'
+                    MDScreen:
+                        md_bg_color:51/255,153/255,255/255,1
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        MDBoxLayout:
+                            size_hint_y:.15
+                            padding:dp(25)
+                            MDBoxLayout:
+                                orientation:"vertical"
+                                MDLabel:
+                                    text:"Fit Chat"
+                                    font_style:"H4"
+                                    text_color:'white'
+                                MDBoxLayout:
+                                    adaptive_size:True
+                                    spacing:dp(10)
+                                    MDLabel:
+                                        text:"Matching Page"
+                                        text_size:None,None
+                                        adaptive_width:True
+                                    MDIcon:
+                                        icon:'star'
+
+                            MDIconButton:
+                                icon:""
+                        MDGridLayout:
+                            size_hint_y:.60
+                            cols:2
+                            padding:[dp(15),dp(15),dp(15),dp(35)]
+                            spacing:dp(15)
+                            ElementCard:
+                                icon: ''
+                                text:"Person 1 chat"
+                                subtext:""
+                                items_count:""
+
+                            ElementCard:
+                                image:""
+                                text:"Person 2 chat"
+                                subtext:""
+                                items_count:""
+
+                            ElementCard:
+                                image:""
+                                text:"Person 3 chat"
+                                subtext:""
+                                items_count:""
+
+                            ElementCard:
+                                image:""
+                                text:"Person 4 chat"
+                                items_count:""
+                                subtext:""
+
+                MDBottomNavigationItem:
+                    name: "screen 3"
+                    text: "Settings"
+                    icon: 'account-cog'
+                    MDScreen:
+                        MDTextField:
+                            id: change_name
+                            hint_text: "Enter Full Name"
+                            help_text_mode: "on_focus"
+                            pos_hint: {'center_x':0.5, 'center_y': 0.9}
+                            size_hint_x: None
+                            width: 500
+
+                        MDTextField:
+                            id: change_bio
+                            hint_text: "Describe Yourself in a Biography"
+                            multiline: True
+                            help_text_mode: "on_focus"
+                            pos_hint: {'center_x':0.5, 'center_y': 0.7}
+                            size_hint_x: None
+                            width: 500
+
+                        MDRectangleFlatButton:
+                            text: 'Change Avatar'
+                            pos_hint: {'center_x':0.5, 'center_y': 0.3}
+                            on_press: app.change_avatar()
+                            size_hint: .3,.05
+                            background_color: 51/255,153/255,255/255,1
+
+                        MDLabel:
+                            id: change_text
+                            text: ''
+                            pos_hint: {'center_x':0.5, 'center_y': 0.2}
+                            size_hint: .3,.05
+
+                        MDRectangleFlatButton:
+                            text: 'Submit Profile'
+                            pos_hint: {'center_x':0.5, 'center_y': 0.1}
+                            on_press: app.change_data()
+                            size_hint: .3,.05
+                            background_color: 51/255,153/255,255/255,1
+    MDScreen:
+        name: "change_avatar"
+        ScrollView:
+            GridLayout:
+                cols: 3
+                id: avatar_grid
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: "100dp"
+                row_force_default: True
+                spacing: 20, 20
+                padding: 20, 20
+
+
+<ElementCard@MDCard>:
+    md_bg_color:102/255,178/255,255/255, 1
+    padding:dp(15)
+    spacing:dp(15)
+    radius:dp(25)
+    ripple_behavior: True
+
+    image:""
+    text:""
+    subtext:''
+
+    orientation:'vertical'
+
+    MDBoxLayout:
+        orientation:'vertical'
+        MDLabel:
+            halign:"center"
+            text:root.text
+            font_style:"H6"
+        MDLabel:
+            halign:"center"
+            font_style:"Caption"
+            text:root.subtext
+
+
+
+
